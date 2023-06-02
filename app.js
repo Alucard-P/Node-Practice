@@ -5,7 +5,7 @@ const app = express();
 require("dotenv").config();
 
 const rutas = require("./router/rutasWeb");
-const mascota = require("./router/mascotas");
+const mascotas = require("./router/mascotas");
 
 //conexion a base de datos
 const mongoose = require("mongoose");
@@ -28,7 +28,7 @@ app.use(express.static(__dirname + "/public"));
 
 //Rutas web
 app.use("/", rutas);
-app.use("/mascota", mascota);
+app.use("/mascotas", mascotas);
 
 app.use((req, res, next) => {
   // res.status(404).sendFile(__dirname + "/public/404.html");
