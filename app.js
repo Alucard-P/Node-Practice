@@ -1,6 +1,14 @@
 const express = require("express");
-const router = require("./router/rutasWeb");
+const bodyParser = require("body-parser");
 const app = express();
+
+// parse application/x-www-form-urlencoded
+// app.use(bodyParser.urlencoded({ extended: false }));
+// parse application/json
+// app.use(bodyParser.json());
+
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json()); // To parse the incoming requests with JSON payloads
 
 require("dotenv").config();
 
