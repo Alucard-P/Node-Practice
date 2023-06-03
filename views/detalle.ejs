@@ -1,11 +1,12 @@
-<%- include("template/cabezera",{titulo: "Titulo Pagina Principal"}) %>
+<%- include("template/cabezera",{titulo: "Detalles de Mascotas"}) %>
 <body>
   <%- include("template/navbar") %>
   <div class="container">
-    <h1>CRUD MONGO DB</h1>
-    <a href="/mascotas/crear" class="btn btn-success w-100 my-2"
-      >Crear nueva mascota</a
-    >
+    <h1>Detalle Mascotas</h1>
+    <% if(error) {%>
+    <p><%= mensaje %></p>
+    <a href="/mascotas" class="btn btn-dark w-100">Volver a Mascotas</a>
+    <% } %> <% if(!error) {%>
     <table class="table">
       <thead>
         <tr>
@@ -16,21 +17,16 @@
         </tr>
       </thead>
       <tbody>
-        <% if(arrayMascotas.length > 0){ %> <% arrayMascotas.forEach(mascota =>
-        {%>
         <tr>
           <th scope="row"><%= mascota.id %></th>
           <td><%= mascota.nombre %></td>
           <td><%= mascota.descripcion %></td>
-          <td>
-            <a href="/mascotas/<%= mascota.id %>" class="btn btn-warning btn-sm"
-              >Editar</a
-            >
-          </td>
+          <td>@mdo</td>
         </tr>
-        <% })%> <% } %>
       </tbody>
     </table>
+    <% } %>
   </div>
+
   <%- include("template/footer") %>
 </body>

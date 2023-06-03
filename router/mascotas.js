@@ -6,7 +6,7 @@ const Mascota = require("../models/mascota");
 router.get("/", async (req, res) => {
   try {
     const arrayMascotasDB = await Mascota.find();
-    console.log(arrayMascotasDB);
+    // console.log(arrayMascotasDB);
     res.render("mascotas", {
       arrayMascotas: arrayMascotasDB,
     });
@@ -39,10 +39,17 @@ router.get("/:id", async (req, res) => {
 
   try {
     const mascotaDB = await Mascota.findOne({ _id: id });
-
     console.log(mascotaDB);
+    res.render("detalle", {
+      mascota: mascotaDB,
+      error: false,
+    });
   } catch (error) {
     console.log(error);
+    res.render("detalle", {
+      error: true,
+      mensaje: "No se encuentra la mascota",
+    });
   }
 });
 
